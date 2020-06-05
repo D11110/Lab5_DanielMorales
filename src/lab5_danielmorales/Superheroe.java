@@ -14,7 +14,7 @@ public class Superheroe {
     private String nombre;
     private String poder;
     private String debilidad;
-    private String escuadron;
+    private EscuadronSuperheroes escuadron;
     private int fuerza;
     private int agilidadFisica;
     private int agilidadMental;
@@ -22,7 +22,16 @@ public class Superheroe {
     public Superheroe() {
     }
 
-    public Superheroe(String nombre, String poder, String debilidad, String escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
+    public Superheroe(String nombre, String poder, String debilidad, int fuerza, int agilidadFisica, int agilidadMental) {
+        this.nombre = nombre;
+        this.poder = poder;
+        this.debilidad = debilidad;
+        this.fuerza = fuerza;
+        this.agilidadFisica = agilidadFisica;
+        this.agilidadMental = agilidadMental;
+    }
+    
+    public Superheroe(String nombre, String poder, String debilidad, EscuadronSuperheroes escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
         this.nombre = nombre;
         this.poder = poder;
         this.debilidad = debilidad;
@@ -55,12 +64,12 @@ public class Superheroe {
     public void setDebilidad(String debilidad) {
         this.debilidad = debilidad;
     }
-
-    public String getEscuadron() {
+    
+    public EscuadronSuperheroes getEscuadron() {
         return escuadron;
     }
-
-    public void setEscuadron(String escuadron) {
+    
+    public void setEscuadron(EscuadronSuperheroes escuadron) {
         this.escuadron = escuadron;
     }
 
@@ -90,7 +99,7 @@ public class Superheroe {
 
     @Override
     public String toString() {
-        return "Superheroe{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidadFisica=" + agilidadFisica + ", agilidadMental=" + agilidadMental + '}';
+        return "nombre=" + nombre + ", poder=" + poder;
     }
 
 }

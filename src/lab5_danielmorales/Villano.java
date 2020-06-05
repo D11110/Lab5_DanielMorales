@@ -14,7 +14,7 @@ public class Villano {
     private String nombre;
     private String poder;
     private String debilidad;
-    private String escuadron;
+    private EscuadronVillanos escuadron;
     private int fuerza;
     private int agilidadFisica;
     private int agilidadMental;
@@ -22,7 +22,16 @@ public class Villano {
     public Villano() {
     }
 
-    public Villano(String nombre, String poder, String debilidad, String escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
+    public Villano(String nombre, String poder, String debilidad, int fuerza, int agilidadFisica, int agilidadMental) {
+        this.nombre = nombre;
+        this.poder = poder;
+        this.debilidad = debilidad;
+        this.fuerza = fuerza;
+        this.agilidadFisica = agilidadFisica;
+        this.agilidadMental = agilidadMental;
+    }
+    
+    public Villano(String nombre, String poder, String debilidad, EscuadronVillanos escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
         this.nombre = nombre;
         this.poder = poder;
         this.debilidad = debilidad;
@@ -56,11 +65,11 @@ public class Villano {
         this.debilidad = debilidad;
     }
 
-    public String getEscuadron() {
+    public EscuadronVillanos getEscuadron() {
         return escuadron;
     }
 
-    public void setEscuadron(String escuadron) {
+    public void setEscuadron(EscuadronVillanos escuadron) {
         this.escuadron = escuadron;
     }
 
@@ -90,6 +99,6 @@ public class Villano {
 
     @Override
     public String toString() {
-        return "Villano{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidadFisica=" + agilidadFisica + ", agilidadMental=" + agilidadMental + '}';
+        return "Villano{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", fuerza=" + fuerza + ", agilidadFisica=" + agilidadFisica + ", agilidadMental=" + agilidadMental + '}';
     }
 }
