@@ -78,6 +78,13 @@ public class Main extends javax.swing.JFrame {
         listarSuperheroes = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaSupers = new javax.swing.JList<>();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        listarVillanos = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaVillanos = new javax.swing.JList<>();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_addSuper = new javax.swing.JMenuItem();
@@ -374,23 +381,87 @@ public class Main extends javax.swing.JFrame {
 
         listarSuperheroes.setMinimumSize(new java.awt.Dimension(500, 500));
 
+        listaSupers.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(listaSupers);
+
+        jButton4.setText("Eliminar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        jButton5.setText("Modificar");
 
         javax.swing.GroupLayout listarSuperheroesLayout = new javax.swing.GroupLayout(listarSuperheroes.getContentPane());
         listarSuperheroes.getContentPane().setLayout(listarSuperheroesLayout);
         listarSuperheroesLayout.setHorizontalGroup(
             listarSuperheroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listarSuperheroesLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(listarSuperheroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(listarSuperheroesLayout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5)))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
         listarSuperheroesLayout.setVerticalGroup(
             listarSuperheroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listarSuperheroesLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(listarSuperheroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addContainerGap(223, Short.MAX_VALUE))
+        );
+
+        listarVillanos.setMinimumSize(new java.awt.Dimension(500, 500));
+
+        listaVillanos.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(listaVillanos);
+
+        jButton6.setText("Eliminar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jButton7.setText("Modificar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout listarVillanosLayout = new javax.swing.GroupLayout(listarVillanos.getContentPane());
+        listarVillanos.getContentPane().setLayout(listarVillanosLayout);
+        listarVillanosLayout.setHorizontalGroup(
+            listarVillanosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listarVillanosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listarVillanosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(listarVillanosLayout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton7)))
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+        listarVillanosLayout.setVerticalGroup(
+            listarVillanosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listarVillanosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(listarVillanosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -430,6 +501,11 @@ public class Main extends javax.swing.JFrame {
         jMenu3.add(jMenuItem1);
 
         jMenuItem2.setText("Listar villanos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuBar1.add(jMenu3);
@@ -555,6 +631,10 @@ public class Main extends javax.swing.JFrame {
             villanos.add(v);
             ((EscuadronVillanos) escuadron).getMiembros().add(v);
 
+            DefaultListModel modelo = (DefaultListModel) listaVillanos.getModel();
+            modelo.addElement(v);
+            listaVillanos.setModel(modelo);
+
             JOptionPane.showMessageDialog(addSuper, "Villano agregado exitosamente");
 
         } catch (Exception e) {
@@ -655,6 +735,60 @@ public class Main extends javax.swing.JFrame {
         listarSuperheroes.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        listarVillanos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        if (listaSupers.getSelectedIndex() >= 0) {
+            listaSupers.setModel(new DefaultListModel());
+            DefaultListModel modelo = (DefaultListModel) listaSupers.getModel();
+            modelo.removeElementAt(listaSupers.getSelectedIndex());
+            listaSupers.setModel(modelo);
+            JOptionPane.showMessageDialog(listarSuperheroes, "Elemento eliminado exitosamente");
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        if (listaVillanos.getSelectedIndex() >= 0) {
+            listaVillanos.setModel(new DefaultListModel());
+            DefaultListModel modelo = (DefaultListModel) listaVillanos.getModel();
+            modelo.removeElementAt(listaVillanos.getSelectedIndex());
+            listaVillanos.setModel(modelo);
+            JOptionPane.showMessageDialog(listarVillanos, "Elemento eliminado exitosamente");
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        if (listaVillanos.getSelectedIndex() >= 0) {
+            String nombre = JOptionPane.showInputDialog(listarVillanos, "Ingrese el nombre: ");
+            String poder = JOptionPane.showInputDialog(listarVillanos, "Ingrese el poder: ");
+            String debilidad = JOptionPane.showInputDialog(listarVillanos, "Ingrese la debilidad: ");
+            int fuerza = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la fuerza: "));
+            int agFisica = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad fisica: "));
+            int agMental = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad mental: "));
+
+            while (fuerza + agFisica + agMental != 100) {
+                fuerza = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la fuerza: "));
+                agFisica = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad fisica: "));
+                agMental = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad mental: "));
+            }
+
+            Villano v = new Villano(nombre, poder, debilidad, fuerza, agFisica, agMental);
+            listaVillanos.setModel(new DefaultListModel());
+            DefaultListModel modelo = (DefaultListModel) listaVillanos.getModel();
+
+            modelo.addElement(v);
+            modelo.removeElementAt(listaVillanos.getSelectedIndex());
+            listaVillanos.setModel(modelo);
+
+        }
+    }//GEN-LAST:event_jButton7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -700,6 +834,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -725,11 +863,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem jmi_addSuper;
     private javax.swing.JMenuItem jmi_addVillano;
     private javax.swing.JList<String> listaSupers;
+    private javax.swing.JList<String> listaVillanos;
     private javax.swing.JDialog listarSuperheroes;
+    private javax.swing.JDialog listarVillanos;
     private javax.swing.JFormattedTextField tf_agFisicaSuper;
     private javax.swing.JFormattedTextField tf_agFisicaVillano;
     private javax.swing.JFormattedTextField tf_agMentalSuper;
