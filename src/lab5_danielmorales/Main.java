@@ -90,6 +90,10 @@ public class Main extends javax.swing.JFrame {
         arbol = new javax.swing.JDialog();
         jScrollPane3 = new javax.swing.JScrollPane();
         jt_arbol = new javax.swing.JTree();
+        jpm_menu = new javax.swing.JPopupMenu();
+        nombrarLider = new javax.swing.JMenuItem();
+        mostrarDatos = new javax.swing.JMenuItem();
+        jLabel18 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_addSuper = new javax.swing.JMenuItem();
@@ -479,6 +483,11 @@ public class Main extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         jt_arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_arbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_arbolMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jt_arbol);
 
         javax.swing.GroupLayout arbolLayout = new javax.swing.GroupLayout(arbol.getContentPane());
@@ -487,8 +496,8 @@ public class Main extends javax.swing.JFrame {
             arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(arbolLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         arbolLayout.setVerticalGroup(
             arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,7 +507,25 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(167, Short.MAX_VALUE))
         );
 
+        nombrarLider.setText("Nombrar lider");
+        nombrarLider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombrarLiderActionPerformed(evt);
+            }
+        });
+        jpm_menu.add(nombrarLider);
+
+        mostrarDatos.setText("Mostrar datos");
+        mostrarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarDatosActionPerformed(evt);
+            }
+        });
+        jpm_menu.add(mostrarDatos);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5_danielmorales/d22f225381a4f98e3e242510c42f294f.png"))); // NOI18N
 
         jMenu1.setText("Superheroes");
 
@@ -570,11 +597,15 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel18)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel18)
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         pack();
@@ -595,7 +626,7 @@ public class Main extends javax.swing.JFrame {
             superHeroesCont -= Integer.parseInt(tf_fuerzaSuper.getText());
         }
     }//GEN-LAST:event_tf_fuerzaSuperFocusLost
-
+    
     int superHeroesCont;
     int villanosCont;
     ArrayList superheroes = new ArrayList();
@@ -610,32 +641,32 @@ public class Main extends javax.swing.JFrame {
             int fuerza = Integer.parseInt(tf_fuerzaSuper.getText());
             int agFisica = Integer.parseInt(tf_agFisicaSuper.getText());
             int agMental = Integer.parseInt(tf_agMentalSuper.getText());
-
+            
             Superheroe se = new Superheroe(nombre, poder, debilidad, escuadron, fuerza, agFisica, agMental);
             superheroes.add(se);
             ((Escuadrones) escuadron).getMiembros().add(se);
-
+            
             DefaultListModel modelo = (DefaultListModel) listaSupers.getModel();
             modelo.addElement(se);
             listaSupers.setModel(modelo);
-
+            
             DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbol.getModel();
             DefaultMutableTreeNode root = (DefaultMutableTreeNode) modeloArbol.getRoot();
-
+            
             String escuadronString = escuadron.getNombre();
-
+            
             for (int i = 0; i < root.getChildCount(); i++) {
                 if (root.getChildAt(i).toString().equals(escuadronString)) {
                     DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(se);
                     ((DefaultMutableTreeNode) root.getChildAt(i)).add(nodo);
                 }
             }
-
+            
             JOptionPane.showMessageDialog(addSuper, "Superheroe agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(addSuper, "Ha ocurrido un error en los datos");
         }
-
+        
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -646,7 +677,7 @@ public class Main extends javax.swing.JFrame {
             tf_agFisicaSuper.setText("");
         } else {
             superHeroesCont -= Integer.parseInt(tf_agFisicaSuper.getText());
-
+            
         }
     }//GEN-LAST:event_tf_agFisicaSuperFocusLost
 
@@ -664,10 +695,10 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         addVillanos.setVisible(true);
         villanosCont = 100;
-
+        
 
     }//GEN-LAST:event_jmi_addVillanoActionPerformed
-
+    
     ArrayList villanos = new ArrayList();
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -680,29 +711,29 @@ public class Main extends javax.swing.JFrame {
             int fuerza = Integer.parseInt(tf_fuerzaVillano.getText());
             int agFisica = Integer.parseInt(tf_agFisicaVillano.getText());
             int agMental = Integer.parseInt(tf_agMentalVillano.getText());
-
+            
             Villano v = new Villano(nombre, poder, debilidad, escuadron, fuerza, agFisica, agMental);
             villanos.add(v);
             ((Escuadrones) escuadron).getMiembros().add(v);
-
+            
             DefaultListModel modelo = (DefaultListModel) listaVillanos.getModel();
             modelo.addElement(v);
             listaVillanos.setModel(modelo);
-
+            
             DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbol.getModel();
             DefaultMutableTreeNode root = (DefaultMutableTreeNode) modeloArbol.getRoot();
-
+            
             String escuadronString = escuadron.getNombre();
-
+            
             for (int i = 0; i < root.getChildCount(); i++) {
                 if (root.getChildAt(i).toString().equals(escuadronString)) {
                     DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(v);
                     ((DefaultMutableTreeNode) root.getChildAt(i)).add(nodo);
                 }
             }
-
+            
             JOptionPane.showMessageDialog(addSuper, "Villano agregado exitosamente");
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(addSuper, "Ha ocurrido un error en los datos");
         }
@@ -722,7 +753,7 @@ public class Main extends javax.swing.JFrame {
             tf_agFisicaVillano.setText("");
         } else {
             villanosCont -= Integer.parseInt(tf_agFisicaVillano.getText());
-
+            
         }
     }//GEN-LAST:event_tf_agFisicaVillanoFocusLost
 
@@ -740,10 +771,10 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         addEscuadron.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+    
     public String listar(String tipo) {
         String acum = "";
-
+        
         if (tipo.equalsIgnoreCase("Superheroes")) {
             for (int i = 0; i < superheroes.size(); i++) {
                 acum += ((Superheroe) superheroes.get(i)).getNombre() + " \n";
@@ -753,10 +784,10 @@ public class Main extends javax.swing.JFrame {
                 acum += ((Villano) villanos.get(i)).getNombre() + " \n";
             }
         }
-
+        
         return acum;
     }
-
+    
     ArrayList escuadrones = new ArrayList();
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -768,47 +799,47 @@ public class Main extends javax.swing.JFrame {
             if (tipo.equalsIgnoreCase("Superheroes")) {
                 Escuadrones esc = new Escuadrones(nombre, lugar, tipo);
                 escuadrones.add(esc);
-
+                
                 DefaultComboBoxModel modeloSuper = (DefaultComboBoxModel) cb_escuadronSuper.getModel();
                 modeloSuper.addElement(esc);
                 cb_escuadronSuper.setModel(modeloSuper);
                 jmi_addSuper.setEnabled(true);
-
+                
                 DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbol.getModel();
                 DefaultMutableTreeNode root = (DefaultMutableTreeNode) modeloArbol.getRoot();
-
+                
                 DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(esc.getNombre());
-
+                
                 root.add(nodo);
                 modeloArbol.reload();
-
+                
                 JOptionPane.showMessageDialog(addEscuadron, "Escuadron de superheroes creado exitosamente");
             } else if (tipo.equalsIgnoreCase("Villanos")) {
                 Escuadrones esv = new Escuadrones(nombre, lugar, tipo);
                 escuadrones.add(esv);
                 jmi_addVillano.setEnabled(true);
-
+                
                 DefaultComboBoxModel modeloVillano = (DefaultComboBoxModel) cb_escuadronVillano.getModel();
-
+                
                 modeloVillano.addElement(esv);
                 cb_escuadronVillano.setModel(modeloVillano);
-
+                
                 DefaultTreeModel modelo = (DefaultTreeModel) jt_arbol.getModel();
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
-
+                
                 DefaultMutableTreeNode n = new DefaultMutableTreeNode(esv.getNombre());
-
+                
                 raiz.add(n);
                 modelo.reload();
-
+                
                 JOptionPane.showMessageDialog(addEscuadron, "Escuadron de villanos creado exitosamente");
-
+                
             }
-
+            
             tf_nombreEscuadron.setText("");
             tf_lugarEscuadron.setText("");
             cb_tipoEscuadron.setSelectedIndex(0);
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(addEscuadron, "Ha ocurrido un error en los datos");
         }
@@ -855,21 +886,21 @@ public class Main extends javax.swing.JFrame {
             int fuerza = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la fuerza: "));
             int agFisica = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad fisica: "));
             int agMental = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad mental: "));
-
+            
             while (fuerza + agFisica + agMental != 100) {
                 fuerza = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la fuerza: "));
                 agFisica = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad fisica: "));
                 agMental = Integer.parseInt(JOptionPane.showInputDialog(listarVillanos, "Ingrese la agilidad mental: "));
             }
-
+            
             Villano v = new Villano(nombre, poder, debilidad, fuerza, agFisica, agMental);
             listaVillanos.setModel(new DefaultListModel());
             DefaultListModel modelo = (DefaultListModel) listaVillanos.getModel();
-
+            
             modelo.addElement(v);
             modelo.removeElementAt(listaVillanos.getSelectedIndex());
             listaVillanos.setModel(modelo);
-
+            
         }
     }//GEN-LAST:event_jButton7MouseClicked
 
@@ -882,21 +913,21 @@ public class Main extends javax.swing.JFrame {
             int fuerza = Integer.parseInt(JOptionPane.showInputDialog(listarSuperheroes, "Ingrese la fuerza: "));
             int agFisica = Integer.parseInt(JOptionPane.showInputDialog(listarSuperheroes, "Ingrese la agilidad fisica: "));
             int agMental = Integer.parseInt(JOptionPane.showInputDialog(listarSuperheroes, "Ingrese la agilidad mental: "));
-
+            
             while (fuerza + agFisica + agMental != 100) {
                 fuerza = Integer.parseInt(JOptionPane.showInputDialog(listarSuperheroes, "Ingrese la fuerza: "));
                 agFisica = Integer.parseInt(JOptionPane.showInputDialog(listarSuperheroes, "Ingrese la agilidad fisica: "));
                 agMental = Integer.parseInt(JOptionPane.showInputDialog(listarSuperheroes, "Ingrese la agilidad mental: "));
             }
-
+            
             Superheroe s = new Superheroe(nombre, poder, debilidad, fuerza, agFisica, agMental);
             listaSupers.setModel(new DefaultListModel());
             DefaultListModel modelo = (DefaultListModel) listaSupers.getModel();
-
+            
             modelo.addElement(s);
             modelo.removeElementAt(listaSupers.getSelectedIndex());
             listaSupers.setModel(modelo);
-
+            
         }
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -904,6 +935,52 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         arbol.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+    
+    DefaultMutableTreeNode nodo_seleccionado;
+    Superheroe heroe_seleccionado;
+    Villano villano_seleccionado;
+
+    private void jt_arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolMouseClicked
+        // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            int row = jt_arbol.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_arbol.setSelectionRow(row);
+            Object v1 = jt_arbol.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() instanceof Superheroe) {
+                
+                heroe_seleccionado = (Superheroe) nodo_seleccionado.getUserObject();
+                jpm_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+                
+            } else if (nodo_seleccionado.getUserObject() instanceof Villano) {
+                
+                villano_seleccionado = (Villano) nodo_seleccionado.getUserObject();
+                jpm_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jt_arbolMouseClicked
+
+    private void nombrarLiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrarLiderActionPerformed
+        // TODO add your handling code here:
+        if (nodo_seleccionado.getUserObject() instanceof Superheroe) {
+            
+            heroe_seleccionado.setLider(heroe_seleccionado);
+            
+        } else if (nodo_seleccionado.getUserObject() instanceof Villano) {
+            
+            villano_seleccionado.setLider(villano_seleccionado);
+        }
+    }//GEN-LAST:event_nombrarLiderActionPerformed
+
+    private void mostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDatosActionPerformed
+        // TODO add your handling code here:
+        if (nodo_seleccionado.getUserObject() instanceof Superheroe) {
+            JOptionPane.showMessageDialog(arbol, "Info del seleccionado: \n " + heroe_seleccionado.getInfo());
+        } else if (nodo_seleccionado.getUserObject() instanceof Villano) {
+            
+            JOptionPane.showMessageDialog(arbol, "Info del seleccionado: \n " + villano_seleccionado.getInfo());
+        }
+    }//GEN-LAST:event_mostrarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -964,6 +1041,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -986,11 +1064,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JMenuItem jmi_addSuper;
     private javax.swing.JMenuItem jmi_addVillano;
+    private javax.swing.JPopupMenu jpm_menu;
     private javax.swing.JTree jt_arbol;
     private javax.swing.JList<String> listaSupers;
     private javax.swing.JList<String> listaVillanos;
     private javax.swing.JDialog listarSuperheroes;
     private javax.swing.JDialog listarVillanos;
+    private javax.swing.JMenuItem mostrarDatos;
+    private javax.swing.JMenuItem nombrarLider;
     private javax.swing.JFormattedTextField tf_agFisicaSuper;
     private javax.swing.JFormattedTextField tf_agFisicaVillano;
     private javax.swing.JFormattedTextField tf_agMentalSuper;

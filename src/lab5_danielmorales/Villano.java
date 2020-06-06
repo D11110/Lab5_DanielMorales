@@ -14,6 +14,7 @@ public class Villano {
     private String nombre;
     private String poder;
     private String debilidad;
+    private Villano lider;
     private Escuadrones escuadron;
     private int fuerza;
     private int agilidadFisica;
@@ -30,7 +31,17 @@ public class Villano {
         this.agilidadFisica = agilidadFisica;
         this.agilidadMental = agilidadMental;
     }
-    
+
+    public Villano(String nombre, String poder, String debilidad, Villano lider, int fuerza, int agilidadFisica, int agilidadMental) {
+        this.nombre = nombre;
+        this.poder = poder;
+        this.debilidad = debilidad;
+        this.lider = lider;
+        this.fuerza = fuerza;
+        this.agilidadFisica = agilidadFisica;
+        this.agilidadMental = agilidadMental;
+    }
+
     public Villano(String nombre, String poder, String debilidad, Escuadrones escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
         this.nombre = nombre;
         this.poder = poder;
@@ -39,6 +50,14 @@ public class Villano {
         this.fuerza = fuerza;
         this.agilidadFisica = agilidadFisica;
         this.agilidadMental = agilidadMental;
+    }
+
+    public Villano getLider() {
+        return lider;
+    }
+
+    public void setLider(Villano lider) {
+        this.lider = lider;
     }
 
     public String getNombre() {
@@ -95,6 +114,10 @@ public class Villano {
 
     public void setAgilidadMental(int agilidadMental) {
         this.agilidadMental = agilidadMental;
+    }
+
+    public String getInfo() {
+        return "Villano{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", lider=" + lider + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidadFisica=" + agilidadFisica + ", agilidadMental=" + agilidadMental + '}';
     }
 
     @Override

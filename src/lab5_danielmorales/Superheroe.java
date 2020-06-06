@@ -14,6 +14,7 @@ public class Superheroe {
     private String nombre;
     private String poder;
     private String debilidad;
+    private Superheroe lider;
     private Escuadrones escuadron;
     private int fuerza;
     private int agilidadFisica;
@@ -30,7 +31,17 @@ public class Superheroe {
         this.agilidadFisica = agilidadFisica;
         this.agilidadMental = agilidadMental;
     }
-    
+
+    public Superheroe(String nombre, String poder, String debilidad, Superheroe lider, int fuerza, int agilidadFisica, int agilidadMental) {
+        this.nombre = nombre;
+        this.poder = poder;
+        this.debilidad = debilidad;
+        this.lider = lider;
+        this.fuerza = fuerza;
+        this.agilidadFisica = agilidadFisica;
+        this.agilidadMental = agilidadMental;
+    }
+
     public Superheroe(String nombre, String poder, String debilidad, Escuadrones escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
         this.nombre = nombre;
         this.poder = poder;
@@ -39,6 +50,14 @@ public class Superheroe {
         this.fuerza = fuerza;
         this.agilidadFisica = agilidadFisica;
         this.agilidadMental = agilidadMental;
+    }
+
+    public Superheroe getLider() {
+        return lider;
+    }
+
+    public void setLider(Superheroe lider) {
+        this.lider = lider;
     }
 
     public String getNombre() {
@@ -64,11 +83,11 @@ public class Superheroe {
     public void setDebilidad(String debilidad) {
         this.debilidad = debilidad;
     }
-    
+
     public Escuadrones getEscuadron() {
         return escuadron;
     }
-    
+
     public void setEscuadron(Escuadrones escuadron) {
         this.escuadron = escuadron;
     }
@@ -95,6 +114,10 @@ public class Superheroe {
 
     public void setAgilidadMental(int agilidadMental) {
         this.agilidadMental = agilidadMental;
+    }
+
+    public String getInfo() {
+        return "Superheroe{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", lider=" + lider + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidadFisica=" + agilidadFisica + ", agilidadMental=" + agilidadMental + '}';
     }
 
     @Override
