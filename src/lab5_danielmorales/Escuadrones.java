@@ -2,14 +2,14 @@ package lab5_danielmorales;
 
 import java.util.ArrayList;
 
-public class EscuadronSuperheroes {
+public class Escuadrones {
     private String nombre;
     private String lugar;
     private String lider;
     private String tipo;
     private ArrayList miembros = new ArrayList();
 
-    public EscuadronSuperheroes(String nombre, String lugar, String lider, String tipo, ArrayList miembros) {
+    public Escuadrones(String nombre, String lugar, String lider, String tipo, ArrayList miembros) {
         this.nombre = nombre;
         this.lugar = lugar;
         this.lider = lider;
@@ -17,13 +17,13 @@ public class EscuadronSuperheroes {
         setMiembros(miembros);
     }
     
-    public EscuadronSuperheroes(String nombre, String lugar, String tipo) {
+    public Escuadrones(String nombre, String lugar, String tipo) {
         this.nombre = nombre;
         this.lugar = lugar;
         this.tipo = tipo;
     }
 
-    public EscuadronSuperheroes() {
+    public Escuadrones() {
     }
 
     public String getNombre() {

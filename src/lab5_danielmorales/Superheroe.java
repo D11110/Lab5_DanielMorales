@@ -14,7 +14,7 @@ public class Superheroe {
     private String nombre;
     private String poder;
     private String debilidad;
-    private EscuadronSuperheroes escuadron;
+    private Escuadrones escuadron;
     private int fuerza;
     private int agilidadFisica;
     private int agilidadMental;
@@ -31,7 +31,7 @@ public class Superheroe {
         this.agilidadMental = agilidadMental;
     }
     
-    public Superheroe(String nombre, String poder, String debilidad, EscuadronSuperheroes escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
+    public Superheroe(String nombre, String poder, String debilidad, Escuadrones escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
         this.nombre = nombre;
         this.poder = poder;
         this.debilidad = debilidad;
@@ -65,11 +65,11 @@ public class Superheroe {
         this.debilidad = debilidad;
     }
     
-    public EscuadronSuperheroes getEscuadron() {
+    public Escuadrones getEscuadron() {
         return escuadron;
     }
     
-    public void setEscuadron(EscuadronSuperheroes escuadron) {
+    public void setEscuadron(Escuadrones escuadron) {
         this.escuadron = escuadron;
     }
 

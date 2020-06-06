@@ -14,7 +14,7 @@ public class Villano {
     private String nombre;
     private String poder;
     private String debilidad;
-    private EscuadronVillanos escuadron;
+    private Escuadrones escuadron;
     private int fuerza;
     private int agilidadFisica;
     private int agilidadMental;
@@ -31,7 +31,7 @@ public class Villano {
         this.agilidadMental = agilidadMental;
     }
     
-    public Villano(String nombre, String poder, String debilidad, EscuadronVillanos escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
+    public Villano(String nombre, String poder, String debilidad, Escuadrones escuadron, int fuerza, int agilidadFisica, int agilidadMental) {
         this.nombre = nombre;
         this.poder = poder;
         this.debilidad = debilidad;
@@ -65,11 +65,11 @@ public class Villano {
         this.debilidad = debilidad;
     }
 
-    public EscuadronVillanos getEscuadron() {
+    public Escuadrones getEscuadron() {
         return escuadron;
     }
 
-    public void setEscuadron(EscuadronVillanos escuadron) {
+    public void setEscuadron(Escuadrones escuadron) {
         this.escuadron = escuadron;
     }
 
